@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class Main {
+
+    public ArrayList<String> coinChange(int amount)
+    {
+        if(amount<0)
+        {
+            System.out.println("Amount cannot be negative");
+            return new ArrayList<String>();
+        }
+ArrayList<String> l=new ArrayList<String>();
+        int leftover=0;
+        int quarters=0;
+        int dimes=0;
+        int nickels=0;
+        int pennies=0;
+
+         leftover = amount;
+
+        quarters = leftover / 25;
+        leftover = leftover % 25;
+
+        dimes = leftover / 10;
+        leftover = leftover % 10;
+
+        nickels = leftover / 5;
+        leftover = leftover % 5;
+
+        pennies = leftover;
+
+        l.add(quarters+" quarters"+", "+dimes+" dimes"+", "+nickels+" nickel"+", "+pennies+" pennies");
+
+        return l;
+
+    }
+    public static void main(String[] args) {
+        Main change=new Main();
+        int cents=83;
+ArrayList<String> list=change.coinChange(cents);
+
+
+        System.out.println(list);
+    }
+}
