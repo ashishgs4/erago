@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.*;
+
+public class Main {
+
+    public void stock(int[] prices,int n)
+    {
+        if(n==0)
+         System.out.println("No profit No gain");
+        if (n == 1)
+            System.out.println("No profit as at least two days are required to calculate gain");
+            
+         int sellingDay=-1, buyingDay=-1;
+        int minprice = Integer.MAX_VALUE;
+        int maxprofit = 0;
+        int BuyingDayCounter=-1;
+        for (int i = 0; i < n; i++) {
+            if (prices[i] < minprice)
+            {
+                
+                minprice = prices[i];
+                BuyingDayCounter=i;
+            }
+            else if (prices[i] - minprice > maxprofit)
+            {
+                buyingDay=BuyingDayCounter;
+            
+                maxprofit = prices[i] - minprice;
+                sellingDay=i;
+            }
+        }
+        
+        
+        System.out.println("Buy on day: " + (buyingDay + 1)+ " "+ "Sell on day : " + (sellingDay + 1) + "  Maximum Gain: " + maxprofit);
+            
+            
+
+    }
+
+
+    public static void main(String[] args) {
+
+        Main stock = new Main();
+
+
+//int price[] = { 5,8,8,55,38,6,7,42,64,53,1,2,3,4,5 };
+        int price[]={3,8,8,55,38,1,7,42,54,53};
+        int n = price.length;
+
+        stock.stock(price, n);
+    }
+}
